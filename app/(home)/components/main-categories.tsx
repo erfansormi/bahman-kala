@@ -3,13 +3,12 @@ import Text from "@/components/ui/text";
 import { mainCategories } from "@/data/home-page";
 import SectionTitle from "@/components/common/section-title";
 import { FlatList, Image, ScrollView, View } from "react-native";
-import RTLScrollView from "@/components/ui/rtl-scrollview";
 
 const MainCategories = () => {
   return (
     <View style={{ backgroundColor: "white" }}>
       <SectionTitle title="خرید بر اساس دسته بندی" />
-      <RTLScrollView horizontal className="mx-0.5">
+      <ScrollView horizontal className="mx-0.5">
         <FlatList
           numColumns={5}
           data={mainCategories}
@@ -20,7 +19,7 @@ const MainCategories = () => {
             </View>
           )}
         />
-      </RTLScrollView>
+      </ScrollView>
     </View>
   );
 };

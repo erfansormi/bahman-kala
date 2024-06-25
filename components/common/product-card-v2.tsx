@@ -35,7 +35,12 @@ const ProductCardV2 = ({ product }: Props) => {
 
         {/* TITLE */}
         <View>
-          <Text numberOfLines={1} style={{ width: width - 25 }} className="text-xs text-gray-600">
+          <Text
+            size={"xs"}
+            numberOfLines={1}
+            style={{ width: width - 25 }}
+            className="text-gray-600"
+          >
             {product.title}
           </Text>
         </View>

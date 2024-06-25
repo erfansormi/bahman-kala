@@ -16,21 +16,19 @@ const BottomNavigation = () => {
     >
       <View className="flex-row pt-3">
         {tabs(pathname).map((item) => (
-          <TouchableOpacity
-            key={item.link}
-            className="w-1/4"
-            onPress={() => router.navigate(item.link)}
-          >
-            <View className="items-center justify-center">
-              <View className="h-7">{item.icon}</View>
-              <Text
-                size="xs"
-                className={`${pathname === item.link ? "text-rose-500" : "text-gray-500"}`}
-              >
-                {item.title}
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <View className="w-1/4" key={item.link}>
+            <TouchableOpacity className="w-full" onPress={() => router.navigate(item.link)}>
+              <View className="items-center justify-center">
+                <View className="h-7">{item.icon}</View>
+                <Text
+                  size="xs"
+                  className={`${pathname === item.link ? "text-rose-500" : "text-gray-500"}`}
+                >
+                  {item.title}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         ))}
       </View>
     </View>
@@ -74,7 +72,7 @@ const CartIcon = () => {
 
       {cart.products_counts ? (
         <View className="absolute bottom-0.5 -right-2 px-[5px] py-px bg-primary rounded-md">
-          <Text style={{ fontSize: 10, lineHeight: 16 }} color="#fff">
+          <Text style={{ fontSize: 10, lineHeight: 16 }} className="text-white">
             {cart.products_counts}
           </Text>
         </View>

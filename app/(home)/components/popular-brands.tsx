@@ -5,7 +5,7 @@ import SectionTitle from "@/components/common/section-title";
 
 const PopularBrands = () => {
   return (
-    <View className="mb-5">
+    <View className="mb-5 bg-white pb-3">
       <SectionTitle title="محبوب ترین برندها" />
       <FlatList
         horizontal

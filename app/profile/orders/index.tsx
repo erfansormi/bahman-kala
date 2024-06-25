@@ -10,7 +10,6 @@ import { jMonths } from "@/utils/date";
 import ProductPrice from "@/components/common/product-price";
 import ProductColorBadge from "@/components/common/product-color-badge";
 import Badge from "@/components/ui/badge";
-import RTLScrollView from "@/components/ui/rtl-scrollview";
 
 const OrdersPage = () => {
   const { user } = useUserStore();
@@ -40,7 +39,7 @@ const OrdersPage = () => {
                     </View>
 
                     <View className="flex-row items-center" style={{ gap: 5 }}>
-                      <Text className="text-gray-500" size={"sm"}>
+                      <Text className="text-gray-400" size={"sm"}>
                         مبلغ
                       </Text>
                       <ProductPrice priceSize={"sm"} price={item.total_prices_cart} />
@@ -49,13 +48,13 @@ const OrdersPage = () => {
 
                   <View className="flex-row items-center justify-between" style={{ gap: 10 }}>
                     <View className="flex-row items-center" style={{ gap: 5 }}>
-                      <Text className="text-gray-500" size={"sm"}>
+                      <Text className="text-gray-400" size={"sm"}>
                         تخفیف
                       </Text>
                       <ProductPrice priceSize={"sm"} price={item.total_profit_percentage} />
                     </View>
                     <View className="flex-row items-center" style={{ gap: 5 }}>
-                      <Text className="text-gray-500" size={"sm"}>
+                      <Text className="text-gray-400" size={"sm"}>
                         هزینه ارسال
                       </Text>
                       <ProductPrice priceSize={"sm"} price={item.shipping_cost} />
@@ -68,14 +67,14 @@ const OrdersPage = () => {
                 {/* ORDER EMAIL AND ADDRESS */}
                 <View style={{ gap: 6 }}>
                   <View className="flex-row items-center" style={{ gap: 5 }}>
-                    <Text className="text-gray-500" size={"sm"}>
+                    <Text className="text-gray-400" size={"sm"}>
                       ایمیل
                     </Text>
                     <Text size={"sm"}>{user.email}</Text>
                   </View>
 
                   <View className="flex-row items-center" style={{ gap: 5 }}>
-                    <Text className="text-gray-500" size={"sm"}>
+                    <Text className="text-gray-400" size={"sm"}>
                       آدرس
                     </Text>
                     <Text size={"sm"}>{item.address}</Text>
@@ -85,13 +84,14 @@ const OrdersPage = () => {
                 <Hr />
 
                 {/* PRODUCTS */}
-                <RTLScrollView
+                <ScrollView
                   horizontal
+                  showsHorizontalScrollIndicator={false}
                   contentContainerStyle={{
                     minWidth: "100%",
                     paddingHorizontal: 4,
-                    gap: 12,
-                    flexDirection: "row-reverse",
+                    gap: 16,
+                    flexDirection: "row",
                   }}
                 >
                   {item.products.map((item, index) => (
@@ -131,7 +131,7 @@ const OrdersPage = () => {
                       </View>
                     </View>
                   ))}
-                </RTLScrollView>
+                </ScrollView>
               </View>
             </Card>
           ))}

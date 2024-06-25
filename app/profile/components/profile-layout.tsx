@@ -20,46 +20,48 @@ const ProfileLayout = ({ children }: { children?: ReactNode }) => {
 
   if (!user) return <LoadingScreen />;
   return (
-    <Container withStatusBarOffset className="pt-2">
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={() => {
-              setRefreshing(true);
-              mutate();
-              const fetchData = async () => {
-                await getUserInfo()
-                  .then((res) => {
-                    setUser(res.data);
-                    cartSetter(res.data.cart as any);
-                  })
-                  .catch((err: AxiosError<any>) => {
-                    console.log(err.response?.data);
+    <>
+      <Container withStatusBarOffset windowHeight className="pt-2 bg-gray-100">
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => {
+                setRefreshing(true);
+                mutate();
+                const fetchData = async () => {
+                  await getUserInfo()
+                    .then((res) => {
+                      setUser(res.data);
+                      cartSetter(res.data.cart as any);
+                    })
+                    .catch((err: AxiosError<any>) => {
+                      console.log(err.response?.data);
 
-                    setUser(null);
-                    router.navigate("/auth/login");
-                    return;
-                  })
-                  .finally(() => {
-                    setRefreshing(false);
-                  });
-              };
+                      setUser(null);
+                      router.navigate("/auth/login");
+                      return;
+                    })
+                    .finally(() => {
+                      setRefreshing(false);
+                    });
+                };
 
-              fetchData();
-            }}
-          />
-        }
-      >
-        <View style={{ paddingBottom: BottomNavigationHeight + 20 }}>
-          <ProfilePanel />
-          {children}
-        </View>
-      </ScrollView>
+                fetchData();
+              }}
+            />
+          }
+        >
+          <View style={{ paddingBottom: BottomNavigationHeight + 20 }}>
+            <ProfilePanel />
+            {children}
+          </View>
+        </ScrollView>
+      </Container>
 
       <BottomNavigation />
-    </Container>
+    </>
   );
 };
 

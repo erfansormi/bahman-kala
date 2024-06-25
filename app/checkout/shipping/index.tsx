@@ -4,10 +4,8 @@ import Text from "@/components/ui/text";
 import Card from "@/components/ui/card";
 import Button from "@/components/ui/button";
 import { AntDesign } from "@expo/vector-icons";
-import { colors } from "@/utils/constants/styles";
 import { useUserStore } from "@/store/user-store";
 import Container from "@/components/common/container";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ProductPrice from "@/components/common/product-price";
 import { Dimensions, ScrollView, TouchableOpacity, View } from "react-native";
 import ShippingProductsInfo from "./components/shipping-products-info";
@@ -22,7 +20,7 @@ const Shipping = () => {
   return (
     <>
       <Container withStatusBarOffset windowHeight className="bg-gray-100 px-0">
-        <ScrollView contentContainerStyle={{ gap: 8, paddingBottom: 98 }}>
+        <ScrollView contentContainerStyle={{ gap: 8, paddingBottom: 98, height: "100%" }}>
           {/* HEADER */}
           <Card className="pt-2 pb-3 bg-white">
             <Text fontFamily="vazirBold" size="xl" className="text-primary text-center">
@@ -78,52 +76,52 @@ const Shipping = () => {
             </View>
           </Card>
         </ScrollView>
-
-        {/* BOTTOM PAYMENT BUTTONS */}
-        <Card
-          style={{ height: 90 }}
-          className="flex-row justify-between absolute bottom-0 inset-x-0 border-t border-t-gray-300 items-center"
-        >
-          <View className="py-1">
-            {deliveryDate && deliveryHour ? (
-              <Button
-                onPress={() => {
-                  Toast.show(
-                    "بدلیل تحریم ها و عدم امکان استفاده از گوگل مپ و نیاز بکند این پروژه به ثبت آدرس قبل از ارسال سفارش، فعلا امکان ثبت سفارش نمی‌باشد!",
-                    {
-                      type: "danger",
-                      textStyle: {
-                        width: Dimensions.get("window").width - 100,
-                        fontFamily: "vazir",
-                      },
-                      duration: 7000,
-                    }
-                  );
-                }}
-                size={"base2"}
-                fontSizes={14}
-              >
-                ثبت سفارش
-              </Button>
-            ) : (
-              <Button
-                size={"base2"}
-                fontSizes={14}
-                variant="outline"
-                onPress={() => useShippingStore.setState({ deliverTimeModal: true })}
-              >
-                انتخاب زمان ارسال
-              </Button>
-            )}
-          </View>
-          <View>
-            <Text size="sm">جمع سبد خرید</Text>
-            <ProductPrice
-              price={user?.cart.products_prices ? user.cart.products_prices + 6 : undefined}
-            />
-          </View>
-        </Card>
       </Container>
+
+      {/* BOTTOM PAYMENT BUTTONS */}
+      <Card
+        style={{ height: 90 }}
+        className="flex-row justify-between absolute bottom-0 inset-x-0 border-t border-t-gray-300 items-center"
+      >
+        <View className="py-1">
+          {deliveryDate && deliveryHour ? (
+            <Button
+              onPress={() => {
+                Toast.show(
+                  "بدلیل تحریم ها و عدم امکان استفاده از گوگل مپ و نیاز بکند این پروژه به ثبت آدرس قبل از ارسال سفارش، فعلا امکان ثبت سفارش نمی‌باشد!",
+                  {
+                    type: "danger",
+                    textStyle: {
+                      width: Dimensions.get("window").width - 100,
+                      fontFamily: "vazir",
+                    },
+                    duration: 7000,
+                  }
+                );
+              }}
+              size={"base2"}
+              fontSizes={14}
+            >
+              ثبت سفارش
+            </Button>
+          ) : (
+            <Button
+              size={"base2"}
+              fontSizes={14}
+              variant="outline"
+              onPress={() => useShippingStore.setState({ deliverTimeModal: true })}
+            >
+              انتخاب زمان ارسال
+            </Button>
+          )}
+        </View>
+        <View>
+          <Text size="sm">جمع سبد خرید</Text>
+          <ProductPrice
+            price={user?.cart.products_prices ? user.cart.products_prices + 6 : undefined}
+          />
+        </View>
+      </Card>
 
       {/* DELIVERY TIME MODAL */}
       <ShippingSelectDateModal />

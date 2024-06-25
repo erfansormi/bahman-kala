@@ -11,7 +11,6 @@ import ProductDetailsHeader from "./components/product-details-header";
 import { useProductDetails, useProducts } from "@/hooks/fetching/products";
 import ProductDetailsBottomNavbar from "./components/product-details-bottom-navbar";
 import ProductSelectVariant from "./components/product-select-variant";
-import RTLScrollView from "@/components/ui/rtl-scrollview";
 
 const ProductDetails = () => {
   const { slug } = useLocalSearchParams();
@@ -114,10 +113,10 @@ const ProductDetails = () => {
                 </View>
 
                 {/* ATTRIBUTES */}
-                <RTLScrollView
+                <ScrollView
                   horizontal
                   showsHorizontalScrollIndicator={false}
-                  contentContainerStyle={{ gap: 10, flexDirection: "row-reverse" }}
+                  contentContainerStyle={{ gap: 10, flexDirection: "row" }}
                 >
                   {product.attributes.map((item) => (
                     <View key={item._id} className="px-3 py-1 bg-gray-200/60 rounded-lg">
@@ -129,7 +128,7 @@ const ProductDetails = () => {
                       </Text>
                     </View>
                   ))}
-                </RTLScrollView>
+                </ScrollView>
 
                 <View className="my-2">
                   <Hr />

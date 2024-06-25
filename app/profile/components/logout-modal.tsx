@@ -25,11 +25,11 @@ const LogoutModal = ({ open, setOpen }: Props) => {
   return (
     <Modal open={open} setOpen={setOpen} title="آیا واقعا میخواهید خارج شوید؟">
       <View className="flex-row" style={{ gap: 10, marginTop: 20 }}>
-        <Button onPress={logout} style={{ width: "48%" }} fontSizes="sm" size="sm">
+        <Button onPress={logout} style={{ width: "48%" }} fontSizes="sm" size="base">
           بله مطمئنم
         </Button>
         <Button
-          size="sm"
+          size="base"
           fontSizes="sm"
           variant="outline"
           style={{ width: "48%" }}

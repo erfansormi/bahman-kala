@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 import Text from "./text";
+import { cn } from "@/libs/utils";
 
 interface Props {
   label?: string;
@@ -21,6 +22,7 @@ const Input = forwardRef<TextInput, Props & TextInputProps>(
       size = "sm",
       variant = "filled",
       fontFamily = "vazir",
+      className,
       ...props
     },
     ref
@@ -37,11 +39,8 @@ const Input = forwardRef<TextInput, Props & TextInputProps>(
         )}
         <TextInput
           ref={ref}
-          className={`rounded-lg px-3 ${sizes[size]} ${variants[variant]}`}
-          style={[
-            { fontFamily, paddingVertical: 0, paddingHorizontal: 0, textAlign: "right" },
-            style,
-          ]}
+          style={[{ fontFamily, paddingVertical: 0, paddingHorizontal: 12 }, style]}
+          className={cn(`rounded-lg px-3`, sizes[size], variants[variant], className)}
           {...props}
         />
 

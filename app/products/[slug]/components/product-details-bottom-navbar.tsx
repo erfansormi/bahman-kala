@@ -28,8 +28,6 @@ const ProductDetailsBottomNavbar = () => {
         item.variant.color === productStore.selectedVariant.selectedColor
     );
 
-  console.log("product store variant: ", productStore.selectedVariant);
-
   const addToCart = () => {
     setLoading(true);
     addProductToCart(productStore)

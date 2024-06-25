@@ -47,7 +47,9 @@ const FavoriteListProductCard = ({
           </View>
 
           <View style={{ flexBasis: Dimensions.get("window").width - 120 - 70 }}>
-            <Text numberOfLines={3}>{item.title}</Text>
+            <Text size={"sm"} numberOfLines={3}>
+              {item.title}
+            </Text>
           </View>
         </View>
 
@@ -74,6 +76,7 @@ const FavoriteListProductCard = ({
       <View className="pt-3">
         <View className="py-1">
           <Button
+            size="base2"
             variant="outline"
             loading={loading}
             onPress={() => {

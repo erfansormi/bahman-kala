@@ -39,7 +39,7 @@ const ProductDetailsHeader = () => {
           <MaterialCommunityIcons name="cart-outline" size={24} color={colors.icon} />
           {cart.products_counts ? (
             <View className="absolute -bottom-2 -right-2.5 px-1 bg-primary rounded">
-              <Text style={{ fontSize: 10, lineHeight: 16 }} color="#fff">
+              <Text style={{ fontSize: 10, lineHeight: 16, color: "#fff" }}>
                 {cart.products_counts}
               </Text>
             </View>

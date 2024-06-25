@@ -113,7 +113,7 @@ const UpdateNameModal = ({ open, setOpen }: Props) => {
       </View>
 
       <View className="mt-5">
-        <Button loading={loading} onPress={handleSubmit(onSubmit)}>
+        <Button size="base" loading={loading} onPress={handleSubmit(onSubmit)}>
           ثبت
         </Button>
       </View>

@@ -15,7 +15,7 @@ const ProfilePanel = () => {
 
   if (!user) return <LoadingScreen />;
   return (
-    <View className="mb-5 rounded-lg border border-gray-200 pt-3">
+    <View className="mb-5 rounded-lg border bg-white border-gray-200 pt-3">
       {/* USER DETAILS */}
       <View className="px-3" style={{ gap: 8 }}>
         <View className="flex-row">

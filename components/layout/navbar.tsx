@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <View className="justify-end px-3 py-2">
+      <View className="justify-end px-3 py-2 bg-white">
         <View className="relative">
           <Pressable onPress={() => setIsOpenModal(true)}>
             <View className="flex h-10 flex-row justify-between items-center rounded-md bg-gray-200/70 px-4 text-right">

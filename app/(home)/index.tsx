@@ -40,7 +40,7 @@ const Home = () => {
         </View>
       ) : (
         data && (
-          <View className="flex-1">
+          <View className="flex-1 bg-gray-100">
             <Navbar />
 
             <ScrollView

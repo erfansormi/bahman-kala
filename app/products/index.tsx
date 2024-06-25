@@ -25,7 +25,7 @@ const Products = () => {
         data && (
           <>
             <Navbar />
-            <Container screenHeight>
+            <Container screenHeight className="bg-gray-100">
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 refreshControl={

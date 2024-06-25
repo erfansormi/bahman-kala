@@ -2,6 +2,7 @@ import React from "react";
 import Text from "../ui/text";
 import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { cn } from "@/libs/utils";
 
 interface Props {
   color: string;
@@ -24,14 +25,16 @@ const ProductColorBadge = ({ color, isActive, isMinimal = false, minimalClassNam
   return (
     <View
       style={{ gap: 4 }}
-      className={`rounded-full px-3 py-2 border border-gray-200 flex-row items-center ${
+      className={cn(
+        `rounded-full px-3 py-2 border border-gray-200 flex-row items-center`,
         isActive && "border-cyan-500 border-2"
-      }`}
+      )}
     >
       <View
-        className={`w-6 h-6 rounded-full border border-gray-300 ${
+        className={cn(
+          `w-6 h-6 rounded-full border border-gray-300`,
           colors[color] ? colors[color] : ""
-        }`}
+        )}
       >
         {isActive ? (
           <View className={`justify-center items-center`}>

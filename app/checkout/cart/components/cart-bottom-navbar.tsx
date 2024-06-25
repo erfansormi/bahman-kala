@@ -22,7 +22,9 @@ const CartBottomNavbar = () => {
       }}
     >
       <View>
-        <Button onPress={() => router.navigate("/checkout/shipping")}>تایید و تکمیل سفارش</Button>
+        <Button size="base2" onPress={() => router.navigate("/checkout/shipping")}>
+          تایید و تکمیل سفارش
+        </Button>
       </View>
 
       <View>

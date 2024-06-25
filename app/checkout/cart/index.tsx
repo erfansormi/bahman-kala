@@ -117,7 +117,7 @@ const CartPage = () => {
                   </View>
 
                   {/* BUTTONS */}
-                  <View>
+                  <View className="self-end pl-0.5">
                     <ProductCartButtons
                       requestBody={{
                         productId: product._id,

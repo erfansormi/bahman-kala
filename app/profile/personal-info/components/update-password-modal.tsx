@@ -94,6 +94,7 @@ const UpdatePasswordModal = ({ open, setOpen }: Props) => {
                   required
                   label="رمز عبور جدید"
                   onSubmitEditing={() => newRepeatRef.current?.focus()}
+                  returnKeyType="next"
                   value={value}
                   secureTextEntry
                   onBlur={onBlur}
@@ -132,7 +133,7 @@ const UpdatePasswordModal = ({ open, setOpen }: Props) => {
       </View>
 
       <View className="mt-5">
-        <Button loading={loading} onPress={handleSubmit(onSubmit)}>
+        <Button size="base" loading={loading} onPress={handleSubmit(onSubmit)}>
           ثبت
         </Button>
       </View>
