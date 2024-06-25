@@ -13,13 +13,19 @@
       "backgroundColor": "#f42c45"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true,
+        "ExpoLocalization_forcesRTL": true
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.erfansormi.bahmankala",
+      "versionCode": 3
     },
     "web": {
       "bundler": "metro",
@@ -28,7 +34,13 @@
     },
     "extra": {
       "supportsRTL": true,
-      "forcesRTL": true
+      "forcesRTL": true,
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a246c9f0-1a5e-4ab7-89f9-57547a816c5e"
+      }
     },
     "plugins": [
       [

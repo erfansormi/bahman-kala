@@ -1,13 +1,8 @@
 {
   "cli": {
-    "version": ">= 9.0.7",
-    "appVersionSource": "remote"
+    "version": ">= 10.0.2"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "preview": {
       "android": {
         "buildType": "apk"
@@ -24,18 +19,7 @@
     "preview4": {
       "distribution": "internal"
     },
-    "production": {
-      "env": {
-        "EXPO_PUBLIC_BASE_URL": "https://onlineshop.iran.liara.run"
-      },
-      "android": {
-        "image": "latest"
-      },
-      "ios": {
-        "image": "latest"
-      },
-      "autoIncrement": true
-    }
+    "production": {}
   },
   "submit": {
     "production": {}
