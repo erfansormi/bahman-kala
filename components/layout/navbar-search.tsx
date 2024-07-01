@@ -1,6 +1,6 @@
 import React from "react";
 import { Feather } from "@expo/vector-icons";
-import { View, TextInput, TouchableOpacity, TouchableNativeFeedback } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import { windowHeight } from "@/utils/dimensions";
 import { Toast } from "react-native-toast-notifications";
 

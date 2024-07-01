@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { TextInput, TouchableNativeFeedback, View } from "react-native";
+import { TextInput, View } from "react-native";
 import Modal from "@/components/ui/modal";
 import Text from "@/components/ui/text";
 import Input from "@/components/ui/input";

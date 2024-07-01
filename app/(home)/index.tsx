@@ -15,6 +15,7 @@ import BottomNavigation from "@/components/layout/bottom-navigation";
 import LoadingScreen from "@/components/common/loading-screen";
 import { BottomNavigationHeight } from "@/utils/constants/styles";
 import { RefreshControl, ScrollView, TouchableNativeFeedback, View } from "react-native";
+import { Button } from "react-native";
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -42,7 +43,6 @@ const Home = () => {
         data && (
           <View className="flex-1 bg-gray-100">
             <Navbar />
-
             <ScrollView
               showsVerticalScrollIndicator={false}
               refreshControl={

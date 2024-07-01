@@ -17,11 +17,10 @@ const DropdownPicker = ({ label, ...props }: DropDownPickerProps<any> & { label?
           zIndex: 1,
           borderColor: "#ccc",
           backgroundColor: "#fafafa",
-          direction: "rtl",
         }}
         autoScroll
         labelStyle={{ fontFamily: "vazir" }}
-        textStyle={{ fontFamily: "vazirLight", textAlign: "right" }}
+        textStyle={{ fontFamily: "vazirLight", textAlign: "left" }}
         disabledStyle={{ backgroundColor: "#ddd" }}
         arrowIconContainerStyle={{ display: props.disabled ? "none" : "flex" }}
         listItemContainerStyle={{ borderBottomWidth: 1, borderBottomColor: "#eee" }}

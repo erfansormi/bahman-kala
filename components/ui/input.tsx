@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import { TextInput, TextInputProps, View } from "react-native";
 import Text from "./text";
-import { cn } from "@/libs/utils";
 
 interface Props {
   label?: string;
@@ -40,7 +39,7 @@ const Input = forwardRef<TextInput, Props & TextInputProps>(
         <TextInput
           ref={ref}
           style={[{ fontFamily, paddingVertical: 0, paddingHorizontal: 12 }, style]}
-          className={cn(`rounded-lg px-3`, sizes[size], variants[variant], className)}
+          className={`rounded-lg px-3 ${variants[variant]} ${sizes[size]}`}
           {...props}
         />
 

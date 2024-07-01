@@ -1,7 +1,6 @@
 import Text from "./text";
 import { View, ViewProps } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { cn } from "@/libs/utils";
 
 interface Props {
   isEmpty?: boolean;
@@ -10,11 +9,7 @@ interface Props {
 
 const Card = ({ style, isEmpty, emptyTitle, className, ...props }: ViewProps & Props) => {
   return (
-    <View
-      className={cn("rounded-lg border bg-white border-gray-200 p-4", className)}
-      style={[style]}
-      {...props}
-    >
+    <View className={"rounded-lg border bg-white border-gray-200 p-4"} style={[style]} {...props}>
       {isEmpty ? (
         <View className="min-h-[120px]">
           {emptyTitle && <Text>{emptyTitle}</Text>}

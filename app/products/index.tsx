@@ -12,7 +12,7 @@ import { BottomNavigationHeight } from "@/utils/constants/styles";
 
 const Products = () => {
   const [refreshing, setRefreshing] = useState(false);
-  const { data, error, isLoading, mutate } = useSWR<{
+  const { data, isLoading, mutate } = useSWR<{
     success: boolean;
     products: Product[];
   }>("/api/v1/products");
@@ -25,7 +25,7 @@ const Products = () => {
         data && (
           <>
             <Navbar />
-            <Container screenHeight className="bg-gray-100">
+            <Container screenHeight className="bg-gray-100 pt-4">
               <ScrollView
                 showsVerticalScrollIndicator={false}
                 refreshControl={

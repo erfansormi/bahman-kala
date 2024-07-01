@@ -1,8 +1,7 @@
-import { StatusBar, View, ViewProps } from "react-native";
+import { View, ViewProps } from "react-native";
 import React, { ReactNode } from "react";
 import { BottomNavigationHeight } from "@/utils/constants/styles";
 import { screenHeight as screenH, windowHeight as windowH } from "@/utils/dimensions";
-import { cn } from "@/libs/utils";
 
 interface Props {
   children: ReactNode;
@@ -24,7 +23,7 @@ const Container = ({
 }: Props & ViewProps) => {
   return (
     <View
-      className={cn("flex-1", className)}
+      className={"flex-1"}
       style={[
         {
           // marginTop: withStatusBarOffset ? StatusBar.currentHeight : 0,

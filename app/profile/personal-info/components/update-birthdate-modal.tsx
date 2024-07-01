@@ -122,6 +122,7 @@ const UpdateBirthDateModal = ({ open, setOpen }: Props) => {
 
           {/* YEARS */}
           <DropdownPicker
+            dropDownDirection="TOP"
             label="سال"
             items={years}
             open={openYear}

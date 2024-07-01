@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { router } from "expo-router";
-import Card from "@/components/ui/card";
 import Text from "@/components/ui/text";
 import Button from "@/components/ui/button";
 import { useUserStore } from "@/store/user-store";
@@ -9,7 +8,6 @@ import ProductPrice from "@/components/common/product-price";
 import { Dimensions, Image, Pressable, View } from "react-native";
 import DiscountPercentage from "@/components/common/discount-percentage";
 import { colors } from "@/utils/constants/styles";
-import axiosInstance from "@/libs/axios";
 import { Toast } from "react-native-toast-notifications";
 import { FavoritesList } from "@/types/user";
 import { likeProductApi } from "@/services/profile";
