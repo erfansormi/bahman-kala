@@ -1,11 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import {
-  Animated,
-  ScrollView,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React, { useEffect } from "react";
+import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 import moment from "moment-jalaali";
 import Text from "@/components/ui/text";
 import Modal from "@/components/ui/modal";
@@ -13,6 +7,7 @@ import { colors } from "@/utils/constants/styles";
 import { useShippingStore } from "@/store/shipping-store";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import RadioButton from "@/components/ui/radio-button";
+import { ScrollView, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 
 let dates = [];
 for (let i = 2; i < 7; i++) {
@@ -24,20 +19,11 @@ const ShippingSelectDateModal = () => {
   const setter = useShippingStore.setState;
   const { deliverTimeModal, deliveryDate, deliveryHour, activeDateTab } = useShippingStore();
   const setOpen = (value: boolean) => setter({ deliverTimeModal: value });
-  const xPos = useRef(new Animated.Value(200)).current;
+  const x = useSharedValue(200);
 
   useEffect(() => {
-    Animated.timing(xPos, {
-      toValue: 200,
-      duration: 0,
-      useNativeDriver: false,
-    }).reset();
-
-    Animated.timing(xPos, {
-      toValue: 0,
-      duration: 400,
-      useNativeDriver: true,
-    }).start();
+    x.value = 200;
+    x.value = withSpring(0, { duration: 2000 });
   }, [deliverTimeModal]);
 
   return (
@@ -72,29 +58,14 @@ const ShippingSelectDateModal = () => {
               >
                 <TouchableNativeFeedback
                   onPress={() => {
-                    Animated.timing(xPos, {
-                      duration: 0,
-                      isInteraction: true,
-                      useNativeDriver: true,
-                      toValue: activeDateTab && activeDateTab > date.date() ? -400 : 200,
-                    }).start(({ finished }) => {
-                      if (finished) {
-                        Animated.timing(xPos, {
-                          toValue: 0,
-                          duration: 400,
-                          useNativeDriver: true,
-                        }).start();
-                      }
-                    });
-
+                    x.value = activeDateTab && activeDateTab > date.date() ? -400 : 200;
+                    x.value = withSpring(0, { duration: 2000 });
                     setter({ activeDateTab: date.date() });
                   }}
                 >
                   <View className="items-center p-2 rounded-lg">
                     <Text size="sm" className="text-gray-600">
-                      {Intl.DateTimeFormat("fa", { weekday: "long" }).format(
-                        new Date(date.format()).getTime()
-                      )}
+                      {Intl.DateTimeFormat("fa", { weekday: "long" }).format(date.toDate())}
                     </Text>
 
                     <Text className="text-gray-600">{date.jDate()}</Text>
@@ -109,7 +80,7 @@ const ShippingSelectDateModal = () => {
         <Animated.View
           className="px-5"
           style={{
-            transform: [{ translateX: xPos }],
+            transform: [{ translateX: x }],
           }}
         >
           {hours.map((item, i) => (
