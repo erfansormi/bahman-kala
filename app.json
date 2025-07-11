@@ -1,21 +1,27 @@
 {
   "expo": {
-    "name": "bahman-kala",
+    "name": "Bahman Kala",
     "slug": "bahman-kala",
-    "version": "1.0.0",
+    "version": "1.4.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "bahmankala",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true,
+        "ExpoLocalization_forcesRTL": true
+      },
+      "bundleIdentifier": "com.erfansormi.bahmankala"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
+      "package": "com.erfansormi.bahmankala",
       "edgeToEdgeEnabled": true
     },
     "web": {
@@ -23,17 +29,27 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "extra": {
+      "supportsRTL": true,
+      "forcesRTL": true,
+      "swapLeftAndRightInRTL": false,
+      "eas": {
+        "projectId": "a246c9f0-1a5e-4ab7-89f9-57547a816c5e"
+      }
+    },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#ef4056"
         }
-      ]
+      ],
+      "expo-localization",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
