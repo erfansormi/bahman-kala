@@ -1,7 +1,7 @@
-import React from "react";
 import View from "@/components/ui/view";
-import Text from "../ui/text";
 import { fontSizes } from "@/utils/constants/styles";
+import React from "react";
+import Text from "../ui/text";
 
 interface Props {
   price?: number;
@@ -17,7 +17,7 @@ const ProductPrice = ({ price, oldPrice, priceSize, oldPriceSize = "sm" }: Props
         <Text
           size={oldPriceSize}
           fontFamily="vazirBold"
-          className="ml-8 text-gray-400 line-through"
+          className="ml-8 text-gray-400 line-through self-end"
         >
           {oldPrice ? Number(oldPrice + "0000").toLocaleString("fa") : null}
         </Text>

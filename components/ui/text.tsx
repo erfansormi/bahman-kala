@@ -1,3 +1,4 @@
+import { cn } from "@/libs/utils";
 import { fontFamilies, fontSizes } from "@/utils/constants/styles";
 import React from "react";
 import { Text as NativeText, TextProps } from "react-native";
@@ -23,7 +24,7 @@ const Text = ({
         },
         style,
       ]}
-      className={`text-gray-800 ${className}`}
+      className={cn(`text-gray-800`, className)}
       {...props}
     >
       {props.children}

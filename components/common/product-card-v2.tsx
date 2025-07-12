@@ -68,7 +68,7 @@ const ProductCardV2 = ({ product }: Props) => {
           </View>
 
           {/* OLD PRICE */}
-          <View className="h-5">
+          <View className="h-5 self-end">
             <Text size="sm" fontFamily="vazirBold" className="ml-8 text-gray-400 line-through">
               {product.sellers[0].variants[0].old_price
                 ? Number(product.sellers[0].variants[0].old_price + "0000").toLocaleString("fa")

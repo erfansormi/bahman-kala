@@ -1,16 +1,17 @@
-import { User } from "@/types/user";
+import Card from "@/components/ui/card";
 import Text from "@/components/ui/text";
 import View from "@/components/ui/view";
-import Card from "@/components/ui/card";
-import React, { useState } from "react";
-import ProfileLayout from "../components/profile-layout";
-import { AntDesign } from "@expo/vector-icons";
+import { cn } from "@/libs/utils";
 import { useUserStore } from "@/store/user-store";
-import UpdateNameModal from "./components/update-name-modal";
-import UpdateEmailModal from "./components/update-email-modal";
-import UpdatePasswordModal from "./components/update-password-modal";
-import UpdateBirthDateModal from "./components/update-birthdate-modal";
+import { User } from "@/types/user";
+import { AntDesign } from "@expo/vector-icons";
+import React, { useState } from "react";
 import { TouchableNativeFeedback } from "react-native";
+import ProfileLayout from "../components/profile-layout";
+import UpdateBirthDateModal from "./components/update-birthdate-modal";
+import UpdateEmailModal from "./components/update-email-modal";
+import UpdateNameModal from "./components/update-name-modal";
+import UpdatePasswordModal from "./components/update-password-modal";
 
 const PersonalInfo = () => {
   const { user } = useUserStore();
@@ -42,10 +43,14 @@ const PersonalInfo = () => {
           flex: 0,
         }}
       >
-        {personalInfoItems(user!).map((item) => (
+        {personalInfoItems(user!).map((item, index) => (
           <View
             key={item.name}
-            className="flex-row items-center justify-between p-5 border-b border-b-gray-200"
+            className={cn(
+              "flex-row items-center justify-between p-5 border-b border-b-gray-200",
+              index === 0 && "pt-2",
+              personalInfoItems(user!).length === index + 1 && "pb-2 border-b-0"
+            )}
           >
             <View className="gap-y-3">
               {/* TITLE */}

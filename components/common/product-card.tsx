@@ -1,3 +1,4 @@
+import { cn } from "@/libs/utils";
 import { router } from "expo-router";
 import React from "react";
 import { Image, Pressable } from "react-native";
@@ -49,9 +50,10 @@ const ProductCard = ({ index, product, productsLength }: Props) => {
         {/* PRICE */}
         <View className="w-full h-10">
           <View
-            className={`w-full flex-row items-center gap-1 text-3xl ${
+            className={cn(
+              `w-full flex-row items-center gap-1 text-3xl`,
               product.sellers[0].variants[0].discount_percentage ? "justify-between" : "justify-end"
-            }`}
+            )}
           >
             {/* PERCENTAGE DISCOUNT */}
             {product.sellers[0].variants[0].discount_percentage ? (
