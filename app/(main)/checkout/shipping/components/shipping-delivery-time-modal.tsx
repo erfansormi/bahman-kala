@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import moment from "moment-jalaali";
+import Modal from "@/components/ui/modal";
+import RadioButton from "@/components/ui/radio-button";
 import Text from "@/components/ui/text";
 import View from "@/components/ui/view";
-import Modal from "@/components/ui/modal";
-import { colors } from "@/utils/constants/styles";
-import RadioButton from "@/components/ui/radio-button";
 import { useShippingStore } from "@/store/shipping-store";
+import { colors } from "@/utils/constants/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
+import moment from "moment-jalaali";
+import React, { useEffect } from "react";
 import { ScrollView, TouchableNativeFeedback, TouchableOpacity } from "react-native";
+import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 
 let dates = [];
 for (let i = 2; i < 7; i++) {

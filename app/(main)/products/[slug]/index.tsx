@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import Container from "@/components/common/container";
+import LoadingScreen from "@/components/common/loading-screen";
+import ProductsSlider from "@/components/sliders/products-slider";
 import Hr from "@/components/ui/hr";
 import Text from "@/components/ui/text";
 import View from "@/components/ui/view";
-import { useLocalSearchParams } from "expo-router";
-import Container from "@/components/common/container";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import LoadingScreen from "@/components/common/loading-screen";
-import ProductsSlider from "@/components/sliders/products-slider";
-import { Image, RefreshControl, ScrollView } from "react-native";
-import ProductDetailsHeader from "./components/product-details-header";
 import { useProductDetails, useProducts } from "@/hooks/fetching/products";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useLocalSearchParams } from "expo-router";
+import React, { useState } from "react";
+import { Image, RefreshControl, ScrollView } from "react-native";
 import ProductDetailsBottomNavbar from "./components/product-details-bottom-navbar";
+import ProductDetailsHeader from "./components/product-details-header";
 import ProductSelectVariant from "./components/product-select-variant";
 
 const ProductDetails = () => {
@@ -78,7 +78,7 @@ const ProductDetails = () => {
                   <Text size="lg">{product.title}</Text>
                 </View>
 
-                {/* RATES */}
+                {/* RATES, COMMENTS COUNT */}
                 <View className="flex-row items-center" style={{ gap: 15 }}>
                   {/* RATES */}
                   <View className="flex-row items-center" style={{ gap: 4 }}>

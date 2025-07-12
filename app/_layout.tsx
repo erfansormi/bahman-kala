@@ -1,12 +1,13 @@
-import React from "react";
-import { SWRConfig } from "swr";
-import { Stack } from "expo-router";
-import { useFonts } from "expo-font";
-import axiosInstance from "@/libs/axios";
-import SplashScreenController from "./splash";
-import ToastProvider from "@/libs/toast-provider";
-import { I18nManager, Platform } from "react-native";
 import { useIsAuthenticated } from "@/hooks/auth/useIsAuthenticated";
+import axiosInstance from "@/libs/axios";
+import ToastProvider from "@/libs/toast-provider";
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
+import React from "react";
+import { I18nManager, Platform } from "react-native";
+import { SWRConfig } from "swr";
+import "../global.css";
+import SplashScreenController from "./splash";
 
 const fetcher = (url: string) => axiosInstance.get(url).then((res) => res.data);
 

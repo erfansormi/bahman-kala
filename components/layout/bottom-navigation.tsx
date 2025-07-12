@@ -1,11 +1,11 @@
-import Text from "../ui/text";
 import View from "@/components/ui/view";
-import { Path, Svg } from "react-native-svg";
-import { usePathname, router } from "expo-router";
-import { TouchableOpacity } from "react-native";
-import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
-import { BottomNavigationHeight } from "@/utils/constants/styles";
 import { useCartStore } from "@/store/cart-store";
+import { BottomNavigationHeight } from "@/utils/constants/styles";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { router, usePathname } from "expo-router";
+import { TouchableOpacity } from "react-native";
+import { Path, Svg } from "react-native-svg";
+import Text from "../ui/text";
 
 const BottomNavigation = () => {
   const pathname = usePathname();
@@ -21,10 +21,7 @@ const BottomNavigation = () => {
             <TouchableOpacity className="w-full" onPress={() => router.navigate(item.link)}>
               <View className="items-center justify-center">
                 <View className="h-7">{item.icon}</View>
-                <Text
-                  size="xs"
-                  className={`${pathname === item.link ? "text-rose-500" : "text-gray-500"}`}
-                >
+                <Text size="xs" className={`${item.isActive ? "text-rose-500" : "text-gray-500"}`}>
                   {item.title}
                 </Text>
               </View>
@@ -86,6 +83,7 @@ const tabs = (pathname: string) =>
   [
     {
       link: "/",
+      isActive: pathname === "/",
       title: "خانه",
       icon: (
         <Ionicons
@@ -97,22 +95,25 @@ const tabs = (pathname: string) =>
     },
     {
       link: "/products",
+      isActive: pathname === "/products",
       title: "محصولات",
       icon: <CategoryIcon />,
     },
     {
       link: "/checkout/cart",
+      isActive: pathname === "/checkout/cart",
       title: "سبد خرید",
       icon: <CartIcon />,
     },
     {
       link: "/profile/personal-info",
+      isActive: pathname.startsWith("/profile"),
       title: "پروفایل",
       icon: (
         <FontAwesome5
           name="user"
           size={20}
-          color={pathname === "/profile/personal-info" ? "rgb(244 63 94)" : "rgb(107, 114, 128)"}
+          color={pathname.startsWith("/profile") ? "rgb(244 63 94)" : "rgb(107, 114, 128)"}
         />
       ),
     },

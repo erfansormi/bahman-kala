@@ -1,7 +1,7 @@
-import React from "react";
-import Text from "../ui/text";
 import View from "@/components/ui/view";
 import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import Text from "../ui/text";
 
 interface Props {
   color: string;
@@ -25,7 +25,7 @@ const ProductColorBadge = ({ color, isActive, isMinimal = false, minimalClassNam
     <View
       style={{ gap: 4 }}
       className={`rounded-full px-3 py-2 border border-gray-200 flex-row items-center ${
-        isActive && "border-cyan-500 border-2"
+        isActive && "!border-cyan-500 border-2"
       } `}
     >
       <View

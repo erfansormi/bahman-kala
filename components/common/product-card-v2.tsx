@@ -1,7 +1,6 @@
 import { useLinkTo } from "@react-navigation/native";
-import { Image } from "expo-image";
 import React from "react";
-import { Dimensions, Pressable } from "react-native";
+import { Dimensions, Image, Pressable } from "react-native";
 import { Product } from "../../types/main-page";
 import Text from "../ui/text";
 import View from "../ui/view";
@@ -10,9 +9,6 @@ import DiscountPercentage from "./discount-percentage";
 interface Props {
   product: Product;
 }
-
-const blurhash =
-  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const ProductCardV2 = ({ product }: Props) => {
   const linkTo = useLinkTo();
@@ -33,9 +29,8 @@ const ProductCardV2 = ({ product }: Props) => {
         <View>
           <Image
             className="h-32 w-32"
-            source={product.image}
-            contentFit="contain"
-            placeholder={{ blurhash }}
+            source={{ uri: product.image }}
+            style={{ objectFit: "contain" }}
           />
         </View>
 

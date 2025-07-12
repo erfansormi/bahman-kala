@@ -1,22 +1,22 @@
-import { AxiosError } from "axios";
-import React, { useState } from "react";
-import { router } from "expo-router";
-import View from "@/components/ui/view";
-import Text from "@/components/ui/text";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { useCartStore } from "@/store/cart-store";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Card from "@/components/ui/card";
-import { getUserInfo } from "@/services/auth";
-import { useUserStore } from "@/store/user-store";
 import Container from "@/components/common/container";
-import CartBottomNavbar from "./components/cart-bottom-navbar";
-import BottomNavigation from "@/components/layout/bottom-navigation";
+import ProductCartButtons from "@/components/common/product-cart-buttons";
 import ProductColorBadge from "@/components/common/product-color-badge";
 import ProductPrice from "@/components/common/product-price";
-import ProductCartButtons from "@/components/common/product-cart-buttons";
+import BottomNavigation from "@/components/layout/bottom-navigation";
+import Card from "@/components/ui/card";
+import Text from "@/components/ui/text";
+import View from "@/components/ui/view";
+import { getUserInfo } from "@/services/auth";
+import { useCartStore } from "@/store/cart-store";
+import { useUserStore } from "@/store/user-store";
 import { BottomNavigationHeight, colors } from "@/utils/constants/styles";
+import { FontAwesome5 } from "@expo/vector-icons";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { AxiosError } from "axios";
+import { router } from "expo-router";
+import React, { useState } from "react";
 import { Image, Pressable, RefreshControl, ScrollView, TouchableOpacity } from "react-native";
+import CartBottomNavbar from "./components/cart-bottom-navbar";
 
 const CartPage = () => {
   const cart = useCartStore();

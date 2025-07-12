@@ -1,11 +1,12 @@
-import Text from "./text";
-import View from "./view";
 import React, { forwardRef } from "react";
 import { TextInput, TextInputProps } from "react-native";
+import Text from "./text";
+import View from "./view";
 
 interface Props {
   label?: string;
   error?: string;
+  className?: string;
   required?: boolean;
   size?: keyof typeof sizes;
   variant?: keyof typeof variants;
@@ -40,7 +41,7 @@ const Input = forwardRef<TextInput, Props & TextInputProps>(
         <TextInput
           ref={ref}
           style={[{ fontFamily, paddingVertical: 0, paddingHorizontal: 12 }, style]}
-          className={`rounded-lg px-3 ${variants[variant]} ${sizes[size]}`}
+          className={`rounded-lg px-3 ${variants[variant]} ${sizes[size]} ${className}`}
           {...props}
         />
 

@@ -1,6 +1,4 @@
 import { fontSizes } from "@/utils/constants/styles";
-import Text from "./text";
-import View from "./view";
 import React, { ReactNode } from "react";
 import {
   ActivityIndicator,
@@ -9,11 +7,14 @@ import {
   ViewProps,
   ViewStyle,
 } from "react-native";
+import Text from "./text";
+import View from "./view";
 
 interface Props {
   loading?: boolean;
   style?: ViewStyle;
   children: ReactNode;
+  className?: string;
   onPress?: () => void;
   viewProps?: ViewProps;
   fontSizes?: keyof typeof fontSizes | number;
@@ -33,7 +34,7 @@ const Button = (props: Props) => {
     >
       <View
         {...props.viewProps}
-        className={`rounded-lg items-center justify-center ${viewVariants.variant[variant]} ${viewVariants.size[size]}`}
+        className={`rounded-lg items-center justify-center ${viewVariants.variant[variant]} ${viewVariants.size[size]} ${props?.className}`}
         style={[{ opacity: props.loading ? 0.8 : 1 }, props.style]}
       >
         <Text

@@ -1,18 +1,18 @@
-import React from "react";
-import { router } from "expo-router";
-import Text from "@/components/ui/text";
-import View from "@/components/ui/view";
-import Card from "@/components/ui/card";
-import Button from "@/components/ui/button";
-import { AntDesign } from "@expo/vector-icons";
-import { useUserStore } from "@/store/user-store";
 import Container from "@/components/common/container";
 import ProductPrice from "@/components/common/product-price";
-import { Dimensions, ScrollView, TouchableOpacity } from "react-native";
-import ShippingProductsInfo from "./components/shipping-products-info";
+import Button from "@/components/ui/button";
+import Card from "@/components/ui/card";
+import Text from "@/components/ui/text";
+import View from "@/components/ui/view";
 import { useShippingStore } from "@/store/shipping-store";
-import ShippingSelectDateModal from "./components/shipping-delivery-time-modal";
+import { useUserStore } from "@/store/user-store";
+import { AntDesign } from "@expo/vector-icons";
+import { router } from "expo-router";
+import React from "react";
+import { Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { Toast } from "react-native-toast-notifications";
+import ShippingSelectDateModal from "./components/shipping-delivery-time-modal";
+import ShippingProductsInfo from "./components/shipping-products-info";
 
 const Shipping = () => {
   const { user } = useUserStore();
@@ -20,10 +20,10 @@ const Shipping = () => {
 
   return (
     <>
-      <Container withStatusBarOffset windowHeight className="bg-gray-100 px-0">
+      <Container withStatusBarOffset windowHeight className="bg-gray-100 !px-0">
         <ScrollView contentContainerStyle={{ gap: 8, paddingBottom: 98, height: "100%" }}>
           {/* HEADER */}
-          <Card className="pt-2 pb-3 bg-white">
+          <Card className="pt-2 pb-3 bg-white !border-x-0 !border-t-0">
             <Text fontFamily="vazirBold" size="xl" className="text-primary text-center">
               بهمان کالا
             </Text>

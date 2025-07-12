@@ -1,11 +1,11 @@
-import React from "react";
+import ProductColorBadge from "@/components/common/product-color-badge";
 import Text from "@/components/ui/text";
 import View from "@/components/ui/view";
-import { useLocalSearchParams } from "expo-router";
-import { Pressable, ScrollView } from "react-native";
-import { useProductStore } from "@/store/product-store";
 import { useProductDetails } from "@/hooks/fetching/products";
-import ProductColorBadge from "@/components/common/product-color-badge";
+import { useProductStore } from "@/store/product-store";
+import { useLocalSearchParams } from "expo-router";
+import React from "react";
+import { Pressable, ScrollView } from "react-native";
 
 const ProductSelectVariant = () => {
   const { slug } = useLocalSearchParams();
@@ -36,7 +36,7 @@ const ProductSelectVariant = () => {
                     });
                   }}
                   className={`rounded-full border border-gray-200 px-3 py-2 ${
-                    item._id === productStore.selectedVariant?._id && "border-2 border-cyan-500"
+                    item._id === productStore.selectedVariant?._id && "border-2 !border-cyan-500"
                   }`}
                 >
                   <Text size="sm" className="uppercase">

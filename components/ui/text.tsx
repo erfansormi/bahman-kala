@@ -1,6 +1,6 @@
+import { fontFamilies, fontSizes } from "@/utils/constants/styles";
 import React from "react";
 import { Text as NativeText, TextProps } from "react-native";
-import { fontFamilies, fontSizes } from "@/utils/constants/styles";
 
 interface Props {
   size?: keyof typeof fontSizes | number;
@@ -23,7 +23,7 @@ const Text = ({
         },
         style,
       ]}
-      className={"text-gray-800"}
+      className={`text-gray-800 ${className}`}
       {...props}
     >
       {props.children}
