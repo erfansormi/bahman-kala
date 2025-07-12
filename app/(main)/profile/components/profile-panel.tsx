@@ -1,17 +1,16 @@
-import { router } from "expo-router";
-import React, { useState } from "react";
+import LoadingScreen from "@/components/common/loading-screen";
 import Text from "@/components/ui/text";
 import View from "@/components/ui/view";
-import LogoutModal from "./logout-modal";
 import { useUserStore } from "@/store/user-store";
-import { useRoute } from "@react-navigation/native";
+import { AntDesign, FontAwesome, FontAwesome5, FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { router, usePathname } from "expo-router";
+import React, { useState } from "react";
 import { TouchableNativeFeedback } from "react-native";
-import LoadingScreen from "@/components/common/loading-screen";
-import { FontAwesome5, FontAwesome6, FontAwesome, Ionicons, AntDesign } from "@expo/vector-icons";
+import LogoutModal from "./logout-modal";
 
 const ProfilePanel = () => {
+  const pathname = usePathname();
   const { user } = useUserStore();
-  const route = useRoute();
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
   if (!user) return <LoadingScreen />;
@@ -54,7 +53,7 @@ const ProfilePanel = () => {
             <View
               style={{ gap: 6 }}
               className={`flex-row items-center border-t border-t-gray-200 py-4 pl-2 pr-5 ${
-                route.name.match(item.link) && "rounded-r-md border-r-4 border-r-rose-500"
+                pathname.match(item.link) && "rounded-r-md border-r-4 border-r-rose-500"
               }`}
             >
               <View className="w-7 items-center">{item.icon}</View>

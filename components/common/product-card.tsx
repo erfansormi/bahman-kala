@@ -1,4 +1,4 @@
-import { useLinkTo } from "@react-navigation/native";
+import { router } from "expo-router";
 import React from "react";
 import { Image, Pressable } from "react-native";
 import { Product } from "../../types/main-page";
@@ -14,11 +14,9 @@ interface Props {
 }
 
 const ProductCard = ({ index, product, productsLength }: Props) => {
-  const linkTo = useLinkTo();
-
   return (
     <Pressable
-      onPress={() => linkTo(`/products/${product.slug}`)}
+      onPress={() => router.navigate(`/products/${product.slug}`)}
       key={product._id}
       testID={product._id}
       style={{

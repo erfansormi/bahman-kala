@@ -1,4 +1,4 @@
-import { useLinkTo } from "@react-navigation/native";
+import { router } from "expo-router";
 import React from "react";
 import { Dimensions, Image, Pressable } from "react-native";
 import { Product } from "../../types/main-page";
@@ -11,12 +11,11 @@ interface Props {
 }
 
 const ProductCardV2 = ({ product }: Props) => {
-  const linkTo = useLinkTo();
   const width = Dimensions.get("window").width / 2 - 21;
 
   return (
     <Pressable
-      onPress={() => linkTo(`/products/${product.slug}`)}
+      onPress={() => router.navigate(`/products/${product.slug}`)}
       key={product._id}
       testID={product._id}
       style={{
