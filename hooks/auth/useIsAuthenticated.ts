@@ -1,16 +1,16 @@
-import { AxiosError } from "axios";
-import { useEffect, useState } from "react";
 import { getUserInfo } from "@/services/auth";
-import * as SecureStore from "expo-secure-store";
-import { useUserStore } from "@/store/user-store";
 import { useCartStore } from "@/store/cart-store";
+import { useUserStore } from "@/store/user-store";
 import { useUserTokenStore } from "@/store/user-token";
+import * as SecureStore from "expo-secure-store";
+import { useEffect, useState } from "react";
 
 export const useIsAuthenticated = () => {
   const cartSetter = useCartStore.setState;
   const { user, setUser } = useUserStore((state) => state);
   const { token, setToken } = useUserTokenStore((state) => state);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<null | string>();
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -27,9 +27,11 @@ export const useIsAuthenticated = () => {
         const res = await getUserInfo();
 
         setUser(res.data);
+        setError(null);
         cartSetter(res.data.cart as any);
       } catch (err: any) {
-        console.log("err: ", (err as AxiosError)?.response?.data);
+        console.log("err: ", err?.response?.data);
+        setError(err?.response?.data?.message || err?.message || "خطایی رخ داده است");
         setToken(null);
         setUser(null);
       } finally {
@@ -44,5 +46,6 @@ export const useIsAuthenticated = () => {
     token,
     user,
     isLoading,
+    error,
   };
 };
