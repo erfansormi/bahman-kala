@@ -11,13 +11,9 @@ export default function Layout() {
     return <Redirect href="/auth/login" />;
   }
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <Slot />
+      {isLoading ? <LoadingScreen /> : <Slot />}
     </SafeAreaView>
   );
 }
