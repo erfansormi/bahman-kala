@@ -15,7 +15,7 @@ export default function Layout() {
   const toast = useToast();
 
   const showToast = () => {
-    if (error === "Network Error") {
+    if (error === "Network Error" && !isLoading) {
       toast.show("لطفا اتصال خود به اینترنت را بررسی کنید", {
         type: "danger",
         duration: 2000,
@@ -25,7 +25,7 @@ export default function Layout() {
 
   useEffect(() => {
     showToast();
-  }, [error]);
+  }, [error, isLoading]);
 
   if (isGuest) {
     return <Redirect href="/auth/login" />;
