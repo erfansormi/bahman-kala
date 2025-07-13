@@ -4,13 +4,28 @@ import View from "@/components/ui/view";
 import { useIsAuthenticated } from "@/hooks/auth/useIsAuthenticated";
 import { Ionicons } from "@expo/vector-icons";
 import { Redirect, Slot } from "expo-router";
+import { useEffect } from "react";
 import { TouchableNativeFeedback } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { mutate } from "swr";
+import { useToast } from "react-native-toast-notifications";
 
 export default function Layout() {
-  const { token, isLoading, error } = useIsAuthenticated();
+  const { token, isLoading, error, checkAuth } = useIsAuthenticated();
   const isGuest = !token;
+  const toast = useToast();
+
+  const showToast = () => {
+    if (error === "Network Error") {
+      toast.show("لطفا اتصال خود به اینترنت را بررسی کنید", {
+        type: "danger",
+        duration: 2000,
+      });
+    }
+  };
+
+  useEffect(() => {
+    showToast();
+  }, [error]);
 
   if (isGuest) {
     return <Redirect href="/auth/login" />;
@@ -25,7 +40,12 @@ export default function Layout() {
           <Text className="text-red-500" size="xl">
             خطا در دریافت دیتا
           </Text>
-          <TouchableNativeFeedback onPress={() => mutate("/api/v1/users/me")}>
+          <TouchableNativeFeedback
+            onPress={() => {
+              checkAuth();
+              showToast();
+            }}
+          >
             <View className="flex-row" style={{ gap: 6 }}>
               <Text className="text-red-500" size="xl">
                 تلاش دوباره

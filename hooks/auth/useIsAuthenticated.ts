@@ -12,33 +12,34 @@ export const useIsAuthenticated = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<null | string>();
 
+  const checkAuth = async () => {
+    setIsLoading(true);
+    const storedToken = await SecureStore.getItemAsync("token");
+
+    if (!storedToken) {
+      setIsLoading(false);
+      setToken(null);
+      return;
+    }
+    setToken(storedToken);
+
+    try {
+      const res = await getUserInfo();
+      console.log("hiiii");
+
+      setUser(res.data);
+      setError(null);
+      cartSetter(res.data.cart as any);
+    } catch (err: any) {
+      console.log("err: ", err?.response?.data || err?.message);
+      setError(err?.response?.data?.message || err?.message || "خطایی رخ داده است");
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const checkAuth = async () => {
-      const storedToken = await SecureStore.getItemAsync("token");
-
-      if (!storedToken) {
-        setIsLoading(false);
-        setToken(null);
-        return;
-      }
-      setToken(storedToken);
-
-      try {
-        const res = await getUserInfo();
-
-        setUser(res.data);
-        setError(null);
-        cartSetter(res.data.cart as any);
-      } catch (err: any) {
-        console.log("err: ", err?.response?.data);
-        setError(err?.response?.data?.message || err?.message || "خطایی رخ داده است");
-        setToken(null);
-        setUser(null);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     checkAuth();
   }, []);
 
@@ -47,5 +48,6 @@ export const useIsAuthenticated = () => {
     user,
     isLoading,
     error,
+    checkAuth,
   };
 };
